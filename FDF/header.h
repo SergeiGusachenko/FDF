@@ -6,7 +6,7 @@
 /*   By: sgusache <sgusache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:45:55 by sgusache          #+#    #+#             */
-/*   Updated: 2019/03/21 01:50:41 by sgusache         ###   ########.fr       */
+/*   Updated: 2019/03/22 20:56:29 by sgusache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 #define MOVE_DOWN 125
 #define ARREND  NULL
 
+
+typedef struct		s_point
+{
+	double x;
+	double y;
+}					t_point;
+
 typedef struct		s_vector
 {
 	double x0;
@@ -36,6 +43,8 @@ typedef struct		s_vector
 	double x1;
 	double y1;
 	double z;
+	int		image_size;
+	int		window_width;
 }							t_vector;
 
 typedef struct		s_fdf
@@ -50,14 +59,15 @@ typedef struct		s_fdf
 	int		window_hieght;
 }								t_fdf;
 
+int							get_color(t_vector vec, int x, int y, int current_color);
 void						line(t_fdf fdf);
-int								key_press(int key,t_fdf *fdf);
+int							key_press(int key,t_fdf *fdf);
 void						read_map(int fd, t_fdf *fdf);
 void						throw_error(char *str);
 void						drawing(double **map, int width, int hieght, t_fdf* fdf);
 void						to_iso(double *x, double *y, double z);
 void						print_line(t_vector vector, t_fdf *fdf);
 void						print_map(int **map, t_fdf *fdf);
-int								scroll(int key, t_fdf *fdf);
-int									hook_mouse(int button, int x, int y, t_fdf *fdf);
+int							scroll(int key, t_fdf *fdf);
+int							hook_mouse(int button, int x, int y, t_fdf *fdf);
 #endif

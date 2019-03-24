@@ -6,7 +6,7 @@
 /*   By: sgusache <sgusache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 00:08:23 by sgusache          #+#    #+#             */
-/*   Updated: 2019/03/21 14:04:19 by sgusache         ###   ########.fr       */
+/*   Updated: 2019/03/22 21:05:33 by sgusache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ void	print_map(int **map, t_fdf *fdf)
 
 void	send_to_print(t_vector vector, t_fdf *fdf)
 {
+	if(fdf->map[(int)vector.y0][(int)vector.x0] == fdf->map[(int)vector.y1][(int)vector.x1])
+	{
+		if (fdf->map[(int)vector.y0][(int)vector.x0] == 0)
+			vector.z = 0;
+		else
+			vector.z = 2;
+	}
+	else
+		vector.z = 1;
+	vector.window_width = fdf->window_width;
+	vector.image_size = fdf->image_size;
 	to_iso(&(vector.x0),&(vector.y0),fdf->map[(int)vector.y0][(int)vector.x0]);
 	to_iso(&(vector.x1), &(vector.y1),fdf->map[(int)vector.y1][(int)vector.x1]);
 	print_line(vector, fdf);

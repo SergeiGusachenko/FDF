@@ -1,10 +1,3 @@
 {
-    "editor.fontFamily": "'Roboto', sans-serif;",
-    "editor.cursorBlinking": "expand",
-    "editor.fontWeight": "100",
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false,
-    "editor.renderWhitespace": true,
-    "files.trimTrailingWhitespace":true,
-    "files.insertFinalNewLine": true,
+	"git.ignoreLimitWarning": true
 }
